@@ -56,7 +56,7 @@ class Bot(Client):
         await self.send_message(chat_id=SUPPORT_CHAT_ID, text=script.RESTART_GC_TXT.format(today, time))
         app = web.AppRunner(await web_server())
         await app.setup()
-        bind_address = "0.0.0.0"
+        bind_address = "0.0.0.0:8080"
         await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
