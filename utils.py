@@ -190,6 +190,13 @@ async def get_settings(group_id):
         settings = await db.get_settings(group_id)
         temp.SETTINGS[group_id] = settings
     return settings
+
+if peer_id and peer_id != 0:
+    try:
+        peer_type = utils.get_peer_type(peer_id)
+    except ValueError:
+        print(f"Skipping invalid peer ID: {peer_id}")
+        continue  # or return/break depending on your logic
     
 async def save_group_settings(group_id, key, value):
     current = await get_settings(group_id)
